@@ -16,25 +16,30 @@ public class VahanLogin{
     private let vahanApi_UserLogin =  "https://delhigw.napix.gov.in/nic/parivahan/mparivahan/citizenapi/service/getUserLoginToken"
     
     // Get Vahan Auth Token
-    public func login_VahanToken(userDetail:Vahan_TokenDetail,
-                          authToken: String,
-                          completion : @escaping ((_ resData: JSON?,_ error:NSError?) -> Void)){
+    public func login_VahanToken(record_id:String,
+                                 mobile_no:String,
+                                 device_id:String,
+                                 mPin:String,
+                                 deviceModel:String? = nil,
+                                 fcmToken:String? = nil,
+                                 authToken: String,
+                                 completion : @escaping ((_ resData: JSON?,_ error:NSError?) -> Void)){
         
         let mparCitizenDevice: [String: Any] = [
-            "deviceFcmToken": userDetail.fcmToken ?? ""
+            "deviceFcmToken": fcmToken ?? ""
         ]
         
         // citizenLogin dictionary
         let citizenLogin: [String: Any] = [
-            "ctzRecordId": userDetail.record_id, // make sure this is Int or Int64
-            "ctzMobile": userDetail.mobile_no,
-            "ctzDeviceId": userDetail.device_id,
-            "deviceModel": userDetail.deviceModel ?? UIDevice.current.model  // equivalent of Build.MODEL
+            "ctzRecordId": record_id, // make sure this is Int or Int64
+            "ctzMobile": mobile_no,
+            "ctzDeviceId": device_id,
+            "deviceModel": deviceModel ?? UIDevice.current.model  // equivalent of Build.MODEL
         ]
 
         // mparCitizenUser dictionary
         let mparCitizenUser: [String: Any] = [
-            "ctzMpin": userDetail.mpin
+            "ctzMpin": mPin
         ]
         
         let paramers_dic: NSMutableDictionary = NSMutableDictionary()
