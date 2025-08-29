@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct MParivahanTokenDetail:Codable{
+public struct Vahan_TokenDetail:Codable{
     var token = ""
     var record_id = ""
     var device_id = ""

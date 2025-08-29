@@ -16,7 +16,7 @@ public class VahanLogin{
     private let vahanApi_UserLogin =  "https://delhigw.napix.gov.in/nic/parivahan/mparivahan/citizenapi/service/getUserLoginToken"
     
     // Get Vahan Auth Token
-    public func login_VahanToken(userDetail:MParivahanTokenDetail,
+    public func login_VahanToken(userDetail:Vahan_TokenDetail,
                           authToken: String,
                           completion : @escaping ((_ resData: JSON?,_ error:NSError?) -> Void)){
         
